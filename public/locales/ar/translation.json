@@ -1,0 +1,60 @@
+{
+  "welcomeMessage": "مرحبًا بكم في تطبيقنا!",
+  "introduction": "هذا مثال بسيط لـ react-i18next مع دعم RTL.",
+  "thanks": "شكراً لك!",
+  "final_description": "تم إرسال طلبك بنجاح. سيتم إعادة توجيهك قريبًا",
+  "ai": {
+    "prompt": "أنا عاطل عن العمل ولا أملك أي دخل. ساعدني في وصف صعوباتي المالية. الحد الأقصى - 2000 حرف. إنتاج خيار واحد"
+  },
+  "multi-step": {
+    "title": "طلب الحصول على مساعدة مالية",
+    "description": "املأ النموذج أدناه لتقديم طلبك. معلوماتك آمنة ومحمية.",
+    "form_title_one": "الخطوة 1: المعلومات الشخصية",
+    "form_title_two": "الخطوة 2: معلومات عن الأسرة والمالية",
+    "form_title_three": "الخطوة 3: وصف الموقف",
+    "next": "التالي",
+    "previous": "السابق",
+    "done": "تم",
+    "field": "الميدان",
+    "required": "مطلوب",
+    "help": "ساعدني في الكتابة",
+    "error": {
+      "date": "حقل التاريخ مطلوب",
+      "required": "هذا الحقل مطلوب",
+      "invalid_email": "عنوان بريد إلكتروني غير صالح",
+      "national_id_format": "يجب أن يكون التنسيق XXX-XXXX-XXXXX-XX-X",
+      "must_be_number": "يجب أن يكون رقمًا",
+      "must_be_string": "يجب أن تكون سلسلة",
+      "invalid_phone": "تنسيق رقم الهاتف غير صالح"
+    },
+    "steps": {
+      "personal_info": "المعلومات الشخصية",
+      "financial_info": "معلومات عن الأسرة والمالية",
+      "situation_description": "وصف الموقف"
+    },
+    "personal_info": {
+      "name": "الاسم",
+      "nationalId": "الهوية الوطنية",
+      "dateOfBirth": "تاريخ الميلاد",
+      "gender": "الجنس",
+      "country": "البلد",
+      "state": "الولاية",
+      "city": "المدينة",
+      "address": "العنوان",
+      "phone": "الهاتف",
+      "email": "عنوان البريد الإلكتروني"
+    },
+    "family_financial_info": {
+      "maritalStatus": "الحالة الاجتماعية",
+      "dependents": "المعالون",
+      "employmentStatus": "حالة التوظيف",
+      "monthlyIncome": "الدخل الشهري",
+      "housingStatus": "حالة السكن"
+    },
+    "situation_description": {
+      "currentFinancialSituation": "الوضع المالي الحالي",
+      "employmentCircumstances": "ظروف التوظيف",
+      "reasonForApplying": "سبب التقدم للوظيفة"
+    }
+  }
+}

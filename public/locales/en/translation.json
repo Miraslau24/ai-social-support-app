@@ -1,0 +1,60 @@
+{
+  "welcomeMessage": "Welcome to our application!",
+  "introduction": "This is a simple example of react-i18next with RTL support.",
+  "ai": {
+    "prompt": "I am unemployed with no income. Help me describe my financial hardship. Maximum - 2000 characters. Produce single option"
+  },
+  "thanks": "Thank You!",
+  "final_description": "Your application has been submitted successfully. You will be redirected shortly.",
+  "multi-step": {
+    "title": "Application for Financial Assistance",
+    "description": "Fill out the form below to apply. Your information is safe and secure.",
+    "form_title_one": "Step 1: Personal Information",
+    "form_title_two": "Step 2: Family & Financial Info",
+    "form_title_three": "Step 3: Situation Descriptions",
+    "next": "next",
+    "previous": "previous",
+    "done": "done",
+    "field": "The field",
+    "required": "is required",
+    "help": "Help me write",
+    "error": {
+      "date": "The date field is required",
+      "required": "This field is required",
+      "invalid_email": "Invalid email address",
+      "national_id_format": "Format must be XXX-XXXX-XXXXX-XX-X",
+      "must_be_number": "Must be a number",
+      "must_be_string": "Must be a string",
+      "invalid_phone": "Invalid phone number format"
+    },
+    "steps": {
+      "personal_info": "Personal Information",
+      "financial_info": "Family & Financial Info",
+      "situation_description": "Situation Descriptions"
+    },
+    "personal_info": {
+      "name": "Name",
+      "nationalId": "National ID",
+      "dateOfBirth": "Date of Birth",
+      "gender": "Gender",
+      "country": "Country",
+      "state": "State",
+      "city": "City",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email Address"
+    },
+    "family_financial_info": {
+      "maritalStatus": "Marital Status",
+      "dependents": "Dependents",
+      "employmentStatus": "Employment Status",
+      "monthlyIncome": "Monthly Income",
+      "housingStatus": "Housing Status"
+    },
+    "situation_description": {
+      "currentFinancialSituation": "Current Financial Situation",
+      "employmentCircumstances": "Employment Circumstances",
+      "reasonForApplying": "Reason for Applying"
+    }
+  }
+}
