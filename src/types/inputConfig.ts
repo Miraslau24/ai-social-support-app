@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 export type InputConfig = {
   label?: string;
   type: string;
@@ -17,4 +19,6 @@ export type InputConfig = {
   className?: string;
   rows?: number;
   aiHelper?: boolean;
+  validation?: any;
+  disabledDate?: (current: dayjs.Dayjs) => boolean;
 };

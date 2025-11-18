@@ -50,6 +50,7 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({
       placeholder={input.placeholder}
       format={APP_DATE_FORMAT}
       inputReadOnly={true}
+      disabledDate={input.disabledDate}
     />
   );
 };

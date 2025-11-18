@@ -31,6 +31,17 @@ const personalInfoInputs: InputConfig[] = [
     required: true,
     placeholder: '29/09/2004',
     autoComplete: 'off',
+    validation: {
+      type: 'age',
+      minAge: 18,
+    },
+    disabledDate: (current) => {
+      const eighteenAgeDate = new Date();
+      eighteenAgeDate.setFullYear(eighteenAgeDate.getFullYear() - 18);
+      eighteenAgeDate.setHours(23, 59, 59, 999);
+
+      return current && current.toDate() > eighteenAgeDate;
+    },
   },
   {
     label: 'Gender',

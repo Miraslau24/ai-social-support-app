@@ -45,11 +45,6 @@ const createValidationSchema = (inputs: InputConfig[], t: TFunction) => {
                   t('multi-step.error.national_id_format')
                 );
               break;
-            /*case 'number':
-              fieldSchema = z.coerce.number({
-                error: t('multi-step.error.must_be_number'),
-              });
-              break;*/
             default:
               fieldSchema = z.string({
                 error: t('multi-step.error.required'),
