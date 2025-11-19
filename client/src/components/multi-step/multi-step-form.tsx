@@ -33,6 +33,7 @@ const { useBreakpoint } = Grid;
 
 const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
   const [activeHelpField, setActiveHelpField] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const dispatch = useDispatch<AppDispatch>();
   const currentStep = useSelector(
@@ -74,6 +75,7 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
     }
 
     if (currentStep === 2) {
+      setIsLoading(true)
       dispatch(setSituationDescription(data));
       dispatch(submitFinalForm())
         .unwrap()
@@ -82,7 +84,9 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
         })
         .catch((err) => {
           console.error("Submission failed", err);
-        })
+        }).finally(() => {
+          setIsLoading(false)
+      })
     }
   };
 
@@ -220,6 +224,8 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
                 type="primary"
                 size="large"
                 onClick={handleSubmitButton}
+                loading={isLoading}
+                disabled={isLoading}
               >
                 {currentStep < steps.length - 1
                   ? t('multi-step.next')
