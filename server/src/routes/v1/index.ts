@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import applicationRoutes from "@/routes/v1/application";
 
 const router = Router();
 
@@ -10,5 +11,7 @@ router.get('/', (req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+router.use('/application', applicationRoutes);
 
 export default router;
