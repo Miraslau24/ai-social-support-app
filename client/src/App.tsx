@@ -1,11 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import MultiStepForm from './components/multi-step/multi-step-form.tsx';
-import SuccessStep from './components/success-step/success-step.tsx';
 
 function App() {
   const { t, i18n } = useTranslation();
-  //const [isAiPopupOpen, setIsAiPopupOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.dir = i18n.dir(i18n.language);
