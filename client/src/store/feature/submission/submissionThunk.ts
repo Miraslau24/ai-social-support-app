@@ -29,6 +29,10 @@ export const submitFinalForm = createAsyncThunk('submission/submitFinalForm', as
     return await response.json();
 
   } catch (error) {
-    return rejectWithValue(error.message);
+    if (error instanceof Error) {
+      return rejectWithValue(error.message);
+    }
+
+    return rejectWithValue('unknown error');
   }
 })
