@@ -18,6 +18,7 @@ import situationDescriptionInputs from '../../constants/situationDescriptionInpu
 import AiPopup from '../ai-popup/ai-popup.tsx';
 import { setSituationDescription } from '../../store/feature/situationDescription/situationDescriptionSlice.ts';
 import SuccessStep from '../success-step/success-step.tsx';
+import { submitFinalForm } from '../../store/feature/submission/submissionThunk.ts';
 
 interface Step {
   title: string;
@@ -64,17 +65,25 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
           : null,
       };
       dispatch(setPersonalInfo(serializableData));
+      dispatch(setStep(currentStep + 1));
     }
 
     if (currentStep === 1) {
       dispatch(setFamilyFinancialInfo(data));
+      dispatch(setStep(currentStep + 1));
     }
 
     if (currentStep === 2) {
       dispatch(setSituationDescription(data));
+      dispatch(submitFinalForm())
+        .unwrap()
+        .then(() => {
+          dispatch(setStep(currentStep + 1));
+        })
+        .catch((err) => {
+          console.error("Submission failed", err);
+        })
     }
-
-    dispatch(setStep(currentStep + 1));
   };
 
   const handleSubmitButton = async () => {
