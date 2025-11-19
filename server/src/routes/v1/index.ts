@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import applicationRoutes from "@/routes/v1/application";
+import aiRoutes from '@/routes/v1/ai_assistant';
 
 const router = Router();
 
@@ -13,5 +14,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/application', applicationRoutes);
+router.use('/ai', aiRoutes)
 
 export default router;
