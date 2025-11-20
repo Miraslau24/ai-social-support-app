@@ -14,6 +14,7 @@ import wizardReducer from './feature/wizard/wizardSlice.ts';
 import FamilyFinancialInfoReducer from './feature/familyFinancialInfo/familyFinancialInfoSlice.ts';
 import SituationDescriptionReducer from './feature/situationDescription/situationDescriptionSlice.ts';
 import aiSuggestionReducer from './feature/aiSuggestion/aiSuggestionSlice.ts';
+import themeReducer from './feature/theme/themeSlice.ts';
 
 // @ts-ignore
 const isDev: boolean = import.meta.env.DEV;
@@ -24,6 +25,7 @@ const appReducer = combineReducers({
   familyFinancialInfo: FamilyFinancialInfoReducer,
   situationDescription: SituationDescriptionReducer,
   aiSuggestion: aiSuggestionReducer,
+  theme: themeReducer,
 });
 
 export type RootState = ReturnType<typeof appReducer>;
@@ -40,6 +42,7 @@ const persistConfig = {
     'familyFinancialInfo',
     'situationDescription',
     'wizard',
+    'theme',
   ],
 };
 

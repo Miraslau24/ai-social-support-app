@@ -19,6 +19,7 @@ import AiPopup from '../ai-popup/ai-popup.tsx';
 import { setSituationDescription } from '../../store/feature/situationDescription/situationDescriptionSlice.ts';
 import SuccessStep from '../success-step/success-step.tsx';
 import { submitFinalForm } from '../../store/feature/submission/submissionThunk.ts';
+import ThemeSwitcher from '../theme-switcher/theme-switcher.tsx';
 
 interface Step {
   title: string;
@@ -118,7 +119,7 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
       case 0:
         return (
           <>
-            <h2 className="text-xl font-semibold text-slate-700 mb-6">
+            <h2 className="text-xl font-semibold text-slate-700 mb-6 dark:text-gray-200">
               {t('multi-step.form_title_one')}
             </h2>
             <CustomForm
@@ -188,15 +189,16 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
           ${isAiPopupOpen ? 'lg:w-2/3' : ''}
         `}
       >
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-200">
-          <div className="pt-6 pl-6 pr-6 sm:pl-8 sm:pt-8 sm:pr-8">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700">
+          <div className="flex justify-between items-center pt-6 pl-6 pr-6 sm:pl-8 sm:pt-8 sm:pr-8">
             <LanguageSwitcher />
+            <ThemeSwitcher />
           </div>
-          <div className="p-6 sm:p-8 border-b border-gray-200">
-            <h1 className="text-2xl font-bold text-slate-800 sm:text-3xl">
+          <div className="p-6 sm:p-8 border-b border-gray-200 dark:border-gray-700">
+            <h1 className="text-2xl font-bold text-slate-800 sm:text-3xl dark:text-white">
               {title}
             </h1>
-            <p className="text-slate-600 mt-2">{description}</p>
+            <p className="text-slate-600 mt-2 dark:text-gray-300">{description}</p>
           </div>
           <div className="p-6 sm:p-8">
             <Steps
@@ -207,7 +209,7 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
           </div>
           <div className="pl-6 pr-6 sm:pl-8 sm:pr-8">{renderStepContent()}</div>
           <div
-            className={`p-6 border-t border-gray-200 flex flex-col-reverse justify-between items-center gap-4 sm:flex-row ${currentStep === 0 ? 'sm:justify-end' : 'sm:justify-between'} sm:p-8`}
+            className={`p-6 border-t border-gray-200 dark:border-gray-700 flex flex-col-reverse justify-between items-center gap-4 sm:flex-row ${currentStep === 0 ? 'sm:justify-end' : 'sm:justify-between'} sm:p-8`}
           >
             {currentStep > 0 && currentStep < 3 && (
               <Button
