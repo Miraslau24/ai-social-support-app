@@ -23,6 +23,7 @@ interface CustomFormProps {
   defaultModel: Record<string, any>;
   ref: RefObject<CustomFormHandle | null>;
   onFormSubmit: (data: Record<string, any>) => void;
+  onSavePartial?: (data: Record<string, any>) => void;
   title?: string;
   isMobile?: boolean;
   onHelpMeWriteClick?: (model: string) => void;
@@ -40,6 +41,7 @@ const CustomForm: FC<CustomFormProps> = ({
   className,
   defaultModel,
   onFormSubmit,
+  onSavePartial,
   ref,
   title,
   isMobile = false,
@@ -55,6 +57,7 @@ const CustomForm: FC<CustomFormProps> = ({
     control,
     handleSubmit,
     setValue,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(validationSchema),
@@ -99,6 +102,14 @@ const CustomForm: FC<CustomFormProps> = ({
               render={({ field }) => (
                 <ComponentToRender
                   {...field}
+                  onBlur={() => {
+                    field.onBlur();
+
+                    if (onSavePartial) {
+                      const currentData = getValues();
+                      onSavePartial(currentData)
+                    }
+                  }}
                   index={index}
                   input={inputConfig}
                   defaultModel={defaultModel}

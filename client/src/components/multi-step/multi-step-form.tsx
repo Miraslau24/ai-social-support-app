@@ -56,10 +56,9 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
   const isMobile = !screens.sm;
   const isAiPopupOpen = activeHelpField !== null;
 
-  const handleFormSubmit = (data: Record<string, any>) => {
-    dispatch(setStepValidity({ step: currentStep, isValid: true }));
-
-    if (currentStep === 0) {
+  const handleSavePartial = (data: Record<string, any>) => {
+    console.log('Auto-saving data on blur:', data);
+    if (currentStep == 0) {
       const serializableData = {
         ...data,
         dateOfBirth: data.dateOfBirth
@@ -67,17 +66,22 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
           : null,
       };
       dispatch(setPersonalInfo(serializableData));
-      dispatch(setStep(currentStep + 1));
     }
 
     if (currentStep === 1) {
       dispatch(setFamilyFinancialInfo(data));
-      dispatch(setStep(currentStep + 1));
     }
 
     if (currentStep === 2) {
-      setIsLoading(true)
       dispatch(setSituationDescription(data));
+    }
+  }
+
+  const handleFormSubmit = () => {
+    dispatch(setStepValidity({ step: currentStep, isValid: true }));
+
+    if (currentStep === 2) {
+      setIsLoading(true)
       dispatch(submitFinalForm())
         .unwrap()
         .then(() => {
@@ -88,7 +92,9 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
         }).finally(() => {
           setIsLoading(false)
       })
+      return;
     }
+    dispatch(setStep(currentStep + 1));
   };
 
   const handleSubmitButton = async () => {
@@ -130,6 +136,7 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
               ref={formRef}
               title="personal_info"
               key={currentStep}
+              onSavePartial={handleSavePartial}
             />
           </>
         );
@@ -144,6 +151,7 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
               inputs={familyFinancialInfoInputs}
               defaultModel={familyFinancialInfo}
               onFormSubmit={handleFormSubmit}
+              onSavePartial={handleSavePartial}
               ref={formRef}
               title="family_financial_info"
               isMobile={isMobile}
@@ -162,6 +170,7 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ title, description }) => {
               inputs={situationDescriptionInputs}
               defaultModel={situationDescription}
               onFormSubmit={handleFormSubmit}
+              onSavePartial={handleSavePartial}
               ref={formRef}
               title="situation_description"
               onHelpMeWriteClick={setActiveHelpField}
